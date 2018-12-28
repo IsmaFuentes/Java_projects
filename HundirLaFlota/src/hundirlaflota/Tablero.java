@@ -7,8 +7,8 @@ public class Tablero {
     //atributos de la clase
     public int tableroJugador[][] = new int[8][8];
     public int tableroEnemigo[][] = new int[8][8];
-    public int totalBarcosJugador = 0;
-    public int totalBarcosEnemigo = 0;
+    public int totalPuntosJugador = 0;
+    public int totalPuntosEnemigo = 0;
     
     //Método que construye nuestro tablero
     public void iniciaTableros(){
@@ -45,8 +45,8 @@ public class Tablero {
     //Funcion que actualiza el tablero
     public void actualizarTablero(){
         //total de barcos de ambos jugadores
-        totalBarcosJugador = 0;
-        totalBarcosEnemigo = 0;
+        totalPuntosJugador = 0;
+        totalPuntosEnemigo = 0;
         espaciar();
         
         //variables de la IA -> movimientos
@@ -64,7 +64,7 @@ public class Tablero {
                         System.out.print("[0]");
                         break;
                     case 3:
-                        totalBarcosJugador++;
+                        totalPuntosEnemigo++;
                         System.out.print("[X]");
                         break;
                     default:
@@ -80,7 +80,7 @@ public class Tablero {
                         System.out.print("[0]");
                         break;
                     case 3:
-                        totalBarcosEnemigo++;
+                        totalPuntosJugador++;
                         System.out.print("[X]");
                         break;
                     default:
@@ -89,7 +89,8 @@ public class Tablero {
                 }
             }
             System.out.println("");
-        }  
+        }
+        comprobarPosLlenas();
     }
     
     //Espacio entre tableros
@@ -97,4 +98,11 @@ public class Tablero {
         for (int i = 0; i < 5; ++i) System.out.println();
     }
     
+    //comprueba las posiciones llenas del tablero
+    public void comprobarPosLlenas(){
+       for(int i = 0; i < 5; i++){
+           HundirLaFlota.barcosJugador.get(i).identificaBarco();
+           HundirLaFlota.barcosEnemigo.get(i).identificaBarco();
+       }
+    }  
 }

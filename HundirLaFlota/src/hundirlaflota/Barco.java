@@ -7,10 +7,14 @@ import java.util.Random;
 public class Barco{ 
 
     public int posiciones[][];
+    private int puntosBarco[][] = new int[8][8];
     private String orientacion;
+    private int largo;
+    private boolean hundido = false;
 
     //posiciona el barco en el tablero
     public void posicionarBarco(int largo, int posiciones[][]){
+        this.largo = largo;
         this.posiciones = posiciones;
         int random = new Random().nextInt(2);
         //La orientación se decide aleatoriamente
@@ -44,11 +48,13 @@ public class Barco{
             if(orientacion == "vertical"){
                 for(int i = 0; i < largo; i++){
                     posiciones[i+x][y] = 1;
+                    puntosBarco[i+x][y] = 1;
                 }
             }
             if(orientacion == "horizontal"){
                 for(int i = 0; i < largo; i++){
                     posiciones[x][i+y] = 1;
+                    puntosBarco[x][i+y] = 1;
                 }
             } 
         }else{
@@ -83,5 +89,29 @@ public class Barco{
             }
         }
         return hayEspacio;
+    }
+    
+    public void identificaBarco(){
+        int largoBarco = 0;
+        
+        for(int i = 0; i < 8; i++){
+            for(int j = 0; j < 8; j++){
+                if(puntosBarco[i][j]== 1 && posiciones[i][j]== 3){
+                    largoBarco++;
+                }
+            }
+        }
+        if(!hundido){
+            if(largoBarco == this.largo){
+                hundido = true;
+                if(HundirLaFlota.barcosJugador.contains(this)){
+                    System.out.println("El Enemigo ha undido el barco "+largo);
+                    System.out.println("Puntos: "+HundirLaFlota.tab.totalPuntosEnemigo);
+                }else{
+                    System.out.println("Jugador ha undido el barco "+largo);
+                    System.out.println("Puntos: "+HundirLaFlota.tab.totalPuntosJugador);
+                }
+            }  
+        }
     }
 }

@@ -12,9 +12,7 @@ public class HundirLaFlota {
     //objeto scanner
     private static Scanner entrada = new Scanner(System.in);;
     
-    //jugadores
-    private String jugador1 = "Jugador1";
-    private String Jugador2 = "Jugador2";
+    //tablero
     public static Tablero tab = new Tablero();
     
     public static void main(String[] args) {
@@ -22,7 +20,10 @@ public class HundirLaFlota {
         //Crea el tablero del jugador con sus barcos
         tab.creaTablero();
         
-        while(tab.totalBarcosJugador != 15 || tab.totalBarcosEnemigo != 15){
+        while(tab.totalPuntosEnemigo != 15){
+            if(tab.totalPuntosJugador == 15){
+                break;
+            }
             System.out.print("introduce x: ");
             int x = entrada.nextInt();
             System.out.print("introduce y: ");
@@ -42,11 +43,16 @@ public class HundirLaFlota {
                     default: 
                         System.out.print("Ya has realizado este movimiento");
                 }
-                
                 tab.actualizarTablero();                
             } 
         }
-
+        
+        if(tab.totalPuntosJugador == 15){
+            System.out.println("Enhorabuena, has ganado");
+        }
+        if(tab.totalPuntosEnemigo == 15){
+            System.out.println("El jugador enemigo ha ganado");
+        }
     }  
     
 }
