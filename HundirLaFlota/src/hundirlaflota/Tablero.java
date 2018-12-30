@@ -9,6 +9,12 @@ public class Tablero {
     public int tableroEnemigo[][] = new int[8][8];
     public int totalPuntosJugador = 0;
     public int totalPuntosEnemigo = 0;
+    /**
+     * Con estas variables estableceremos un turno extra para 
+     * ambos jugadores si estos aciertan un movimento
+     */
+    public boolean jugadorMueve = true;
+    public boolean enemigoMueve = true;
     
     //Método que construye nuestro tablero
     public void iniciaTableros(){
@@ -51,7 +57,16 @@ public class Tablero {
         
         //variables de la IA -> movimientos
         int x = 0, y = 0;
-        IA.movimientos(x, y);
+        //IA.movimientos(x, y);
+        if(HundirLaFlota.tab.enemigoMueve == true){
+            //si el enemgio realiza un movimiento exitoso mueve otra vez
+            IA.movimientos(x, y);
+        }else{
+            System.out.println("El jugador tiene un turno extra \n");
+        }
+        if(HundirLaFlota.tab.jugadorMueve == false){
+            System.out.println("El enemigo tiene un turno extra \n");
+        }
         
         System.out.println("      Tablero del jugador  \t      Tablero del enemigo  ");
         System.out.println("   [0][1][2][3][4][5][6][7]\t   [0][1][2][3][4][5][6][7]");

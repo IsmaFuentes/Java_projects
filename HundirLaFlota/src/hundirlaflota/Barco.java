@@ -37,20 +37,28 @@ public class Barco{
     
     //crea el barco
     public void crearBarco(int largo, int x, int y, String orientacion){
-        //En caso de que el barco sobrepase los límites del array, se reinicia
+        /**
+         * Para ubicar el barco en el tablero, se comprueba que este no 
+         * sobrepase los limites del array, en caso de sobrepasarlos
+         * se reubica
+         */
         if(largo+x > 8 || largo+y > 8){
             posicionarBarco(largo, posiciones);
             return;
         }
-        //Comprueba si hay espacio para el barco
-        //en caso afirmativo, este se imprime
+        /**
+         * Comprueba si hay espacio para el barco
+         * en caso afirmativo, este se imprime
+         */
         if(posicionVacia(largo,x,y,orientacion)){
+            //se posiciona verticalmente
             if(orientacion == "vertical"){
                 for(int i = 0; i < largo; i++){
                     posiciones[i+x][y] = 1;
                     puntosBarco[i+x][y] = 1;
                 }
             }
+            //se posiciona horizontalmente
             if(orientacion == "horizontal"){
                 for(int i = 0; i < largo; i++){
                     posiciones[x][i+y] = 1;
@@ -62,7 +70,7 @@ public class Barco{
         }
     }
     
-    //comprueba si hay espacio
+    //comprueba si hay espacio en el array
     public boolean posicionVacia(int largo, int x, int y, String orientacion){
         
         boolean hayEspacio = true;
@@ -90,7 +98,10 @@ public class Barco{
         }
         return hayEspacio;
     }
-    
+    /**
+     * identifica cuanto ocupa cada barco en el array para 
+     * poder saber que barco hemos hundido
+     */
     public void identificaBarco(){
         int largoBarco = 0;
         
@@ -101,6 +112,7 @@ public class Barco{
                 }
             }
         }
+        //se comprueba si el barco se a hundido o no
         if(!hundido){
             if(largoBarco == this.largo){
                 hundido = true;

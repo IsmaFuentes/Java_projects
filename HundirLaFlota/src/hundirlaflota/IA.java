@@ -20,9 +20,11 @@ public class IA {
         switch(HundirLaFlota.tab.tableroJugador[x][y]){
             case 1:
                 HundirLaFlota.tab.tableroJugador[x][y] = 3;
+                HundirLaFlota.tab.jugadorMueve = false;
                 break;
             case 0:
                 HundirLaFlota.tab.tableroJugador[x][y] = 2;
+                HundirLaFlota.tab.jugadorMueve = true;
                 break; 
             default:
                
