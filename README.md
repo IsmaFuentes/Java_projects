@@ -1,5 +1,3 @@
-# Java_projects
-
 
 # Practica Hundir la flota
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -8,7 +6,7 @@
 - Generación de 5 barcos por tablero con colocación aleatoria.
 
 
-#Gestión empleados
+# Gestión empleados
 ------------------------------------------------------------------------------------------------------------------------------------------
 - Práctica de estudido.
 - Herencia/ArrayLists/Excepciones/objetos/etc
