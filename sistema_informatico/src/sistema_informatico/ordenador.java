@@ -68,4 +68,13 @@ public class ordenador {
     public void setPulgadas(int pulgadas){
         this.Pulgadas = pulgadas;
     }
+    
+    public void mostrarDatos(){
+        System.out.println(
+                "|Marca: "+this.Marca +" "+
+                "|Modelo: "+this.Modelo +" "+
+                "|Pulgadas: "+this.Pulgadas+" "
+        );
+    }
+    
 }

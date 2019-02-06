@@ -45,4 +45,13 @@ public class portatil extends ordenador{
         }
     }
     
+    @Override
+    public void mostrarDatos(){
+        System.out.print(
+                "|Marca: "+this.Marca +" "+
+                "|Modelo: "+this.Modelo +" "+
+                "|Pulgadas: "+this.Pulgadas+" "+
+                "|Bateria: "+this.Bateria+" "+"\n"
+        );
+    }
 }

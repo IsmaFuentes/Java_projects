@@ -52,4 +52,14 @@ public class sobremesa extends ordenador{
         this.Ancho = ancho;
     }
     
+    @Override
+    public void mostrarDatos(){
+        System.out.print(
+                "|Marca: "+this.Marca +" "+
+                "|Modelo: "+this.Modelo +" "+
+                "|Pulgadas: "+this.Pulgadas+" "+
+                "|Alto: "+this.Altura +" "+
+                "|Ancho: "+this.Ancho +"\n"
+        );
+    }
 }

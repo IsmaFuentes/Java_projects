@@ -1,24 +1,52 @@
 package sistema_informatico;
 
+import java.util.*;
 /**
  *
  * @author Ismael
  */
 public class Sistema_informatico {
-
+    //array de tipo ordenador
+    static ordenador ordenadores[] = new ordenador[3];
+    
+    //entrada de datos por teclado
+    static Scanner datos = new Scanner(System.in);
+    
     public static void main(String[] args) {
         
-        ordenador ord1 = new ordenador("Toshiba","AC3-S0",25);
-        ordenador ord3 = new ordenador(ord1);
+        ordenador ordenador2 = new sobremesa();
+
+        ordenadores[0] = new ordenador("Toshiba","TC23-5T",25);
+        ordenadores[1] = new sobremesa("Lenovo","LT5S-C4",25,456,345);
+        ordenadores[2] = new portatil("Acer","AGTH-6R",22,1000);
         
-        sobremesa sob1 = new sobremesa("Lenovo","LC3-50",25,456,345);
-        sobremesa copia = new sobremesa(sob1);
+        menu();
         
-        portatil port1 = new portatil("Acer","AL3-S0",22,1000);
-        portatil port2 = new portatil();
+    }
+    
+    public static void menu(){
+        System.out.println("Menú");
+        System.out.println("1 - Consulta los ordenadores disponibles");
+        System.out.println("2 - Salir del programa");
         
+        int opcion = datos.nextInt();
         
-        port2.setBateria(1000);
+        switch(opcion){
+            case 1:
+                mostrarOrdenadores();
+                break;
+            case 2:
+                break;
+            default:
+                break;
+        }
+    }
+    
+    public static void mostrarOrdenadores(){
+        System.out.println("Ordenadores disponibles");
+        for(int i = 0; i < ordenadores.length; i++){
+            ordenadores[i].mostrarDatos();
+        }
     }
     
 }
