@@ -6,7 +6,3 @@
 - Generación de 5 barcos por tablero con colocación aleatoria.
 
 
-# Gestión empleados
-------------------------------------------------------------------------------------------------------------------------------------------
-- Práctica de estudido.
-- Herencia/ArrayLists/Excepciones/objetos/etc
