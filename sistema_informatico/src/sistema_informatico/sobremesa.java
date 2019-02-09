@@ -53,13 +53,12 @@ public class sobremesa extends ordenador{
     }
     
     @Override
-    public void mostrarDatos(){
-        System.out.print(
-                "|Marca: "+this.Marca +" "+
-                "|Modelo: "+this.Modelo +" "+
-                "|Pulgadas: "+this.Pulgadas+" "+
-                "|Alto: "+this.Altura +" "+
-                "|Ancho: "+this.Ancho +"\n"
-        );
+    public String mostrarDatos(){
+        String datos = "|Marca: "+this.Marca +" "+
+                       "|Modelo: "+this.Modelo +" "+
+                       "|Pulgadas: "+this.Pulgadas+" "+
+                       "|Alto: "+this.Altura +" "+
+                       "|Ancho: "+this.Ancho;
+        return datos;
     }
 }

@@ -69,12 +69,11 @@ public class ordenador {
         this.Pulgadas = pulgadas;
     }
     
-    public void mostrarDatos(){
-        System.out.println(
-                "|Marca: "+this.Marca +" "+
-                "|Modelo: "+this.Modelo +" "+
-                "|Pulgadas: "+this.Pulgadas+" "
-        );
+    public String mostrarDatos(){
+        String datos = "|Marca: "+this.Marca +" "+
+                       "|Modelo: "+this.Modelo +" "+
+                       "|Pulgadas: "+this.Pulgadas;
+        return datos;
     }
     
 }
