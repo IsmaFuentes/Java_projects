@@ -173,9 +173,9 @@ public class pelicula {
         }
     }
     
-    //método buscar peliculas
+    //método buscar peliculas !!CONTAINS NO LEE LA LETRA Ñ
     public static void buscarPelicula(){
-        System.out.println("¿Qué tipo de búsqueda deseas realizar?");
+        System.out.println("\n¿Qué tipo de búsqueda deseas realizar?");
         System.out.println("1) por título");
         System.out.println("2) por director");
         System.out.println("3) por género");
@@ -183,32 +183,48 @@ public class pelicula {
         System.out.println("5) por duración");
         
         int num = Videoclub.datos.nextInt();
+        System.out.print("Introduce el texto que quieres que aparezca en la búsqueda: ");
         
-        switch(num){
-            case 1:
-                System.out.print("Introduce el texto que quieres que aparezca en la búsqueda: ");
-                Videoclub.datos.nextLine();
-                String cadena = Videoclub.datos.nextLine().toLowerCase();
-                
-                for(pelicula peli : Videoclub.misPeliculas){
+        Videoclub.datos.nextLine();
+        String cadena = Videoclub.datos.nextLine().toLowerCase();
+        
+        for(pelicula peli : Videoclub.misPeliculas){
+            String contenido = 
+                "id: "+peli.idPelicula+" "+"Título: "+peli.getTitulo()+" "+
+                "Director: "+peli.getDirector()+" "+"Género: "+peli.getGenero()+" "+
+                "Año: "+peli.getAño()+" "+"Duración: "+peli.getMinutos()+" "+
+                "Disponible: "+peli.getDisponibilidad();
+            
+            switch(num){
+                case 1:
                     if(peli.getTitulo().toLowerCase().contains(cadena)){
-                        System.out.println(
-                                "id: "+peli.idPelicula+" "+
-                                "Título: "+peli.getTitulo()+" "+
-                                "Director: "+peli.getDirector()+" "+
-                                "Género: "+peli.getGenero()+" "+
-                                "Año: "+peli.getAño()+" "+
-                                "Duración: "+peli.getMinutos()+" "+
-                                "Disponible: "+peli.getDisponibilidad()
-                            );
-                    }else{
-                        System.out.println("Los datos de búsqueda no coinciden con ninguna pelicula");                      
+                        System.out.println(contenido);
                     }
-                }
-                break;
-            default:
-                break;
+                    break;
+                case 2:
+                    if(peli.getDirector().toLowerCase().contains(cadena)){
+                        System.out.println(contenido);
+                    }
+                    break;
+                case 3:
+                    if(peli.getGenero().toLowerCase().contains(cadena)){
+                        System.out.println(contenido);
+                    }
+                    break;
+                case 4://reconversion string a int para comparar el año 
+                    int año = Integer.parseInt(cadena); 
+                    if(año == peli.getAño()){
+                        System.out.println(contenido);
+                    }
+                    break;
+                case 5://reconversion string a int para comparar los minutos
+                    int minutos = Integer.parseInt(cadena); 
+                    if(minutos == peli.getMinutos()){
+                        System.out.println(contenido);
+                    }
+                    break;
+            }
         }
-        
+        System.out.println("");
     }
 }
