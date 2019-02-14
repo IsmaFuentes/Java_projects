@@ -6,3 +6,7 @@
 - Generación de 5 barcos por tablero con colocación aleatoria.
 
 
+# Prácticas 1º DAW
+------------------------------------------------------------------------------------------------------------------------------------------
+- Sistema informático
+- Videoclub (Flata método buscar pelicula)
