@@ -8,5 +8,5 @@
 
 # Prácticas 1º DAW
 ------------------------------------------------------------------------------------------------------------------------------------------
-- Sistema informático
+- Sistema informático(completado)
 - Videoclub (Flata método buscar pelicula)
