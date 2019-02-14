@@ -188,10 +188,10 @@ public class pelicula {
             case 1:
                 System.out.print("Introduce el texto que quieres que aparezca en la búsqueda: ");
                 Videoclub.datos.nextLine();
-                String cadena = Videoclub.datos.nextLine();
+                String cadena = Videoclub.datos.nextLine().toLowerCase();
                 
                 for(pelicula peli : Videoclub.misPeliculas){
-                    if(peli.getTitulo().contains(cadena)){
+                    if(peli.getTitulo().toLowerCase().contains(cadena)){
                         System.out.println(
                                 "id: "+peli.idPelicula+" "+
                                 "Título: "+peli.getTitulo()+" "+
@@ -202,8 +202,7 @@ public class pelicula {
                                 "Disponible: "+peli.getDisponibilidad()
                             );
                     }else{
-                        System.out.println("Los datos de búsqueda no coinciden con ninguna pelicula");
-                        break;
+                        System.out.println("Los datos de búsqueda no coinciden con ninguna pelicula");                      
                     }
                 }
                 break;

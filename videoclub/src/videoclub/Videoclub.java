@@ -11,7 +11,7 @@ public class Videoclub {
     public static Scanner datos = new Scanner(System.in);
     
     public static void main(String[] args) {
-        misPeliculas.add(new pelicula("Baby driver","Anonimo",60,"Acción",2017,2));
+        misPeliculas.add(new pelicula("aaaa driver","Anonimo",60,"Acción",2017,2));
         misPeliculas.add(new pelicula("El señor de los anillos","Tolkien",120,"Fantasía",2001,1));
         misPeliculas.add(new pelicula("Harry Potter","JK Rowling",90,"Fantasía",2003,4));
         
