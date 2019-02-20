@@ -7,14 +7,11 @@ import java.util.Scanner;
  */
 public class Producto_matrices {
     
-    private static int matriz1[][];
-    private static int matriz2[][];
-    private static int filas1,filas2,columnas1,columnas2;
-    private static int resultado[][];
-    private static Scanner datos = new Scanner(System.in);
+    static int filas1,filas2,columnas1,columnas2;
+    static Scanner datos = new Scanner(System.in);
     
     public static void main(String[] args) {
-       
+        
         //datos 1a matriz
         System.out.print("Filas 1º matriz: ");
         filas1 = datos.nextInt();
@@ -26,24 +23,20 @@ public class Producto_matrices {
         System.out.print("Columnas 2º matriz: ");
         columnas2 = datos.nextInt();
         
-        //comprobamos que son multiplicables
+        int matriz1[][] = new int[filas1][columnas1];
+        int matriz2[][] = new int[filas2][columnas2];
+
         if(columnas1 == filas2){
-            multiplica();
+            rellenarMatriz(matriz1);
+            rellenarMatriz(matriz2);
+            imprimirResultado(multiplicarMatrices(matriz1, matriz2));        
         }else{
-            System.out.println(
-                "Las dimensiones no son correctas, para que las matrices sean mutliplicables " +
-                "las columnas de la 1ª han de tener el mismo valor que las filas de la 2ª");
+            throw new RuntimeException(
+                "Las dimensiones no son correctas, para que las matrices sean mutliplicables" +
+                "las columnas de la 1ª han de tener el mismo valor que las filas de la 2ª"
+            );
         }
-    }
-    
-    //método que actualiza las matrices
-    public static void actualizarMatrices(int a[][], int b[][]){
-        a = new int[filas1][columnas1];
-        b = new int[filas2][columnas2];
-        //rellenamos las matrices y las multiplicamos
-        rellenarMatriz(a);
-        rellenarMatriz(b);
-        multiplicarMatrices(a,b);
+
     }
     
     //método que rellena la matriz
@@ -53,12 +46,11 @@ public class Producto_matrices {
                 matriz[i][j] = (int)(Math.random()*9);
             }
         }
-        System.out.println("");
     }
     
-    //método que multiplica dos matrices y guarda el resultado en una tercera
-    public static void multiplicarMatrices(int a[][], int b[][]){
-        resultado = new int[a.length][b[0].length];
+    //método que multiplica dos matrices y devuelve el resultado
+    public static int[][] multiplicarMatrices(int a[][], int b[][]){
+        int resultado[][] = new int[a.length][b[0].length];
         //multiplicación de las matrices
         for(int i = 0; i < resultado.length; i++){
             for(int j = 0; j < resultado[i].length; j++){
@@ -66,10 +58,11 @@ public class Producto_matrices {
                     resultado[i][j] += a[i][z] * b[z][j];
                 }
             }
-        } 
+        }
+        return resultado;
     }
     
-    //lee la matriz y la imprime en pantalla
+    //método que imprime la matriz
     public static void imprimirResultado(int resultado[][]){
         System.out.println("Resultado");
         for(int i = 0; i < resultado.length; i++){
@@ -77,16 +70,7 @@ public class Producto_matrices {
                 System.out.print("["+resultado[i][j]+"]");
             }
             System.out.println();
-        }
+        }       
     }
-    
-    //actualiza las matrices, las multiplica e imprime el resultado
-    public static void multiplica(){
-        try{
-            actualizarMatrices(matriz1,matriz2);
-            imprimirResultado(resultado);
-        }catch(Exception e){
-            System.out.println(e);
-        }
-    }
+      
 }
