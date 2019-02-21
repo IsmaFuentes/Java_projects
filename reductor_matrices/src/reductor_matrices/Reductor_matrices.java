@@ -1,59 +1,74 @@
 package reductor_matrices;
 
+import java.util.Scanner;
 /**
  *
  * @author Ismael
  */
 public class Reductor_matrices {
     
-    //declaramos la matriz
-    public static int filas = 8;
-    public static int columnas = 8;
-    public static boolean divisible = false;
-    public static int matriz_base[][] = new int [filas][columnas];
-
+    static Scanner entrada = new Scanner(System.in);
+    static int filas;
+    static int columnas;
+    static boolean divisible = false;
+    
     public static void main(String[] args) {
+        System.out.print("introduce filas: ");
+        filas = entrada.nextInt();
+        System.out.print("introduce columnas: ");
+        columnas = entrada.nextInt();
         
-        rellenarMatriz(matriz_base);
-        esDivisible();
+        int matriz_base[][] = new int [filas][columnas];
+        reducirMatriz(rellenarMatriz(matriz_base));
         
-        while(divisible == true){
-            actualizar(matriz_base);
-            rellenarMatriz(matriz_base);
-            esDivisible();
-        }
     }
     
     //llena la matriz con números aleatorios
-    public static void rellenarMatriz(int matriz[][]){
+    public static int[][] rellenarMatriz(int matriz[][]){
         for(int i = 0; i < matriz.length; i++){
             for(int j = 0; j < matriz[i].length; j++){
                 matriz[i][j] = (int)(Math.random()*9);
-                System.out.print("["+matriz[j][i]+"]");
             }
-            System.out.println();
         }
-        System.out.println();
+        return matriz;
     }
     
-    //determina si la matriz es divisible o no
+    //comprueba que la matriz es divisible
     public static void esDivisible(){
         if(filas % 2 == 0 && columnas % 2 == 0){
             filas = filas / 2;
             columnas = columnas / 2;
             divisible = true;
         }else{
-            System.out.println("La matriz no puede dividirse más");
             divisible = false;
-        }
+            System.out.println("No se puede reducir más");
+        }       
     }
     
-    //actualiza la matriz con las nuevas dimensiones
-    public static void actualizar(int matriz[][]){
-        if(divisible == true){
+    //reduce la matriz
+    public static void reducirMatriz(int matriz[][]){
+
+        imprimirMatriz(rellenarMatriz(matriz));
+        esDivisible();
+        
+        while(divisible == true){
             matriz = new int[filas][columnas];
-            matriz_base = matriz;
+            rellenarMatriz(matriz);
+            imprimirMatriz(matriz);
+            esDivisible();
         }
+        
+    }
+    
+    //imprime la matriz por pantalla
+    public static void imprimirMatriz(int matriz[][]){
+        for(int i = 0; i < matriz.length; i++){
+            for(int j = 0; j < matriz[i].length; j++){
+                System.out.print("["+matriz[i][j]+"]");
+            }
+            System.out.println("");
+        }
+        System.out.println();
     }
     
 }
