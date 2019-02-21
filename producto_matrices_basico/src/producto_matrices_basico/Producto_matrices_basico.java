@@ -14,7 +14,7 @@ public class Producto_matrices_basico {
         imprimirResultado(multiplicar(matriz1,matriz2));
     }
    
-    //método que suma dos matrices y devuelve el resultado
+    //método que multiplica dos matrices y devuelve el resultado
     public static int[][] multiplicar(int a[][], int b[][]){
         int producto[][] = new int[a.length][b[0].length];
         //comprobamos que pueden multiplicarse
