@@ -15,7 +15,7 @@ public class Suma_matrices {
         imprimirResultado(sumarMatrices(matriz1,matriz2));
     }
    
-    //método que multiplica dos matrices y devuelve el resultado
+    //método que suma dos matrices y devuelve el resultado
     public static int[][] sumarMatrices(int a[][], int b[][]){
         int suma[][] = new int[a.length][a[0].length];
         //comprobamos que pueden sumarse
