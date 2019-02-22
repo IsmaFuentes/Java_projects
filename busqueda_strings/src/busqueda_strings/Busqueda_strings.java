@@ -8,23 +8,22 @@ import java.util.Scanner;
  */
 public class Busqueda_strings {
     
-    static Scanner entrada = new Scanner(System.in);
-    
     public static void main(String[] args) {
         
-        String array[] = {"isma","miquel","luis","ach","alex","alvaro","carlos"}; 
-        /*
-        System.out.print("Introduce el valor buscado: ");
-        String valorBuscado = entrada.nextLine();
-        System.out.println("Posición: "+busquedaStrings(array, valorBuscado));
-        */
-        System.out.println("Posición: "+busqueda(array, "isma"));
-        System.out.println("Posición: "+busqueda(array, "miquel"));
-        System.out.println("Posición: "+busqueda(array, "luis"));
-        System.out.println("Posición: "+busqueda(array, "ach"));
-        System.out.println("Posición: "+busqueda(array, "alex"));
-        System.out.println("Posición: "+busqueda(array, "alvaro"));
-        System.out.println("Posición: "+busqueda(array, "carlos"));
+        String array[] = { "Chris", "Claire", "Django", "John", "Leon", "Morty", "Rick", "Saul", "Tuco", "Walter" };
+
+        System.out.println("Posición: "+busqueda(array, "Chris"));
+        System.out.println("Posición: "+busqueda(array, "Claire"));
+        System.out.println("Posición: "+busqueda(array, "Django"));
+        System.out.println("Posición: "+busqueda(array, "John"));
+        System.out.println("Posición: "+busqueda(array, "Leon"));
+        System.out.println("Posición: "+busqueda(array, "Morty"));
+        System.out.println("Posición: "+busqueda(array, "Rick"));
+        System.out.println("Posición: "+busqueda(array, "Saul"));
+        System.out.println("Posición: "+busqueda(array, "Tuco"));
+        System.out.println("Posición: "+busqueda(array, "Walter"));
+        //valor que no se encuentra -> devuelve -1
+        System.out.println("Posición: "+busqueda(array, "Ismael"));
          
     }
     
@@ -35,36 +34,22 @@ public class Busqueda_strings {
         while(inicio <= fin){
             
             int centro =(fin + inicio) / 2;
-            
             int comparacion = valorBuscado.compareTo(array[centro]);
             
-            if(array[centro].compareTo(valorBuscado) == 0){
+            //si se encuentra en el centro...
+            if(comparacion == 0){
                 return centro;
             }
-            else if(comparacion < 0){
+            //izquierda
+            if(comparacion < 0){
                 fin = centro -1;
-            }else{
+            }
+            //derecha
+            else{
                 inicio = centro +1;
             }
         }
-        return -1;
-    }
-    
-    public static int busquedaStrings(String array[], String valorBuscado){
-        int inicio = 0;
-        int fin = array.length-1;
-        
-        while(inicio <= fin){
-            int mid = (inicio + fin)/2;
-            if(array[mid]== valorBuscado){
-                return mid;
-            }
-            else if(valorBuscado.compareTo(array[mid]) < 0){
-                fin = mid -1;
-            }else{
-                inicio = mid +1;
-            }
-        }
+        //en caso de no encontrar el String, devuelve -1
         return -1;
     }
 }
